@@ -15,10 +15,10 @@
                 renderer='antialias: true; alpha: true'>
                 <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
                 <a-entity gltf-model="./chigusadai.glb"
-                        gps-new-entity-place="latitude: 35.5374048; longitude: 139.5355570" look-at="[gps-new-camera]"
+                        gps-new-entity-place="latitude: 35.5374048; longitude: 139.5355570;" look-at="[gps-new-camera]"
                         scale="30 30 30" position="0 0 1"></a-entity>
                 <a-text id="text" value="" look-at="[gps-camera]" scale="30 30 30" position="0 55 0"
-                        gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"></a-text>
+                        gps-entity-place="latitude: 35.5374048; longitude: 139.5355570;"></a-text>
                  <a-camera gps-camera rotation-reader> </a-camera>
         </a-scene>
         <script>
