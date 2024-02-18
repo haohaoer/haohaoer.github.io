@@ -14,14 +14,15 @@
                  renderer='antialias: true; alpha: true'>
                 <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
                 <a-entity gltf-model="./chigusadai.glb"
-                      gps-new-entity-place="latitude: 35.5374048; longitude: 139.5355570"
+                      gps-new-entity-place="latitude: 35.5374048; longitude: 139.5355570;"
+                      rotaion="0 180 0"
                       scale="30 30 30"
                       position="0 0 -5"
                 ></a-entity>
                 <a-text value="This content will always face you"
                         look-at="[gps-new-camera]"
-                        scale="120 120 120"
-                        gps-new-entity-place="latitude: 35.5382744; longitude: 139.5350176"
+                        scale="50 50 50"
+                        gps-new-entity-place="latitude: 35.5382744; longitude: 139.5350176;"
                 ></a-text>    
         <a-camera gps-camera rotation-reader> </a-camera>
         </a-scene>
