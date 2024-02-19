@@ -12,8 +12,10 @@
 <body>
         <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
                  renderer='antialias: true; alpha: true'>
-                <a-camera gps-new-camera='gpsMinDistance: 5' simulateLatitude="all" simulateLongitude="all"
-                          simulateAltitude="all"></a-camera>
+                <a-camera gps-new-camera='gpsMinDistance: 5'
+                        simulateLatitude="all"
+                        simulateLongitude="all"
+                        simulateAltitude="all"></a-camera>
                 <a-entity gltf-model="./chigusadai.glb"
                       gps-new-entity-place="latitude: 35.5374048; longitude: 139.5355570;"
                       rotation="0 0 0"
@@ -55,8 +57,11 @@
                 gps-entity-place="longitude: 35.7096984; latitude: 139.7206428;" 
                 position="0 0 -1"
                 animation-mixer/>
-        <a-camera gps-camera rotation-reader>
+        <a-camera gps-camera rotation-reader
+                simulateLatitude="all"
+                simulateLongitude="all"
+                simulateAltitude="all">
         </a-camera>
     </a-scene>
 </body>
-(35.7096984, 139.7206428)
+</html>
