@@ -19,30 +19,33 @@ function renderPlaces(places) {
         let longitude = place.location.lng;
 
         scene.appendChild(contributeModelTitle(latitude, longitude));
-        scene.appendChild(contributeModelInfo(latitude, longitude));
     });
 }
 
 const contributeModelTitle = (latitude, longitude) => {
-    let model1 = document.createElement('a-entity');
-    model1.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-    model1.setAttribute('gltf-model', './chigusadai31.glb');
-    model1.setAttribute('position', '0 10 0');
-    model1.setAttribute('scale', '30 30 30');
+    let modelTitle = document.createElement('a-entity');
+    modelTitle.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+    modelTitle.setAttribute('gltf-model', './chigusadai31.glb');
+    modelTitle.setAttribute('position', '0 10 0');
+    modelTitle.setAttribute('scale', '30 30 30');
 
-    model1.addEventListener('loaded', () => {
+    modelTitle.addEventListener('loaded', () => {
         window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
     });
 
-    return model1
+    modelTitle.addEventListener('click', ()=>{
+        scene.appendChild(contributeModelInfo(latitude, longitude))
+    })
+
+    return modelTitle
 }
 
 const contributeModelInfo = (latitude, longitude) => {
-    let model2 = document.createElement('a-entity');
-    model2.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-    model2.setAttribute('gltf-model', './chigusadai32.glb');
-    model2.setAttribute('position', '0 -20 0');
-    model2.setAttribute('scale', '30 30 30');
+    let modelInfo = document.createElement('a-entity');
+    modelInfo.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+    modelInfo.setAttribute('gltf-model', './chigusadai32.glb');
+    modelInfo.setAttribute('position', '0 -20 0');
+    modelInfo.setAttribute('scale', '30 30 30');
 
-    return model2
+    return modelInfo
 }
