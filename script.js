@@ -33,7 +33,7 @@ const contributeModelTitle = (latitude, longitude) => {
         window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
     });
 
-    modelTitle.addEventListener('click', ()=>{
+    scene.addEventListener('click', ()=>{
         scene.appendChild(contributeModelInfo(latitude, longitude))
     })
 
