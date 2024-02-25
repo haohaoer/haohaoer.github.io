@@ -25,9 +25,9 @@ function renderPlaces(places) {
 const contributeModelTitle = (latitude, longitude) => {
     let modelTitle = document.createElement('a-entity');
     modelTitle.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-    modelTitle.setAttribute('gltf-model', './chigusadai31.glb');
+    modelTitle.setAttribute('gltf-model', './chigusadai31orange.glb');
     modelTitle.setAttribute('position', '0 10 0');
-    modelTitle.setAttribute('scale', '30 30 30');
+    modelTitle.setAttribute('scale', '10 10 10');
 
     modelTitle.addEventListener('loaded', () => {
         window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
@@ -43,9 +43,9 @@ const contributeModelTitle = (latitude, longitude) => {
 const contributeModelInfo = (latitude, longitude) => {
     let modelInfo = document.createElement('a-entity');
     modelInfo.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-    modelInfo.setAttribute('gltf-model', './chigusadai32.glb');
+    modelInfo.setAttribute('gltf-model', './chigusadai32yellow.glb');
     modelInfo.setAttribute('position', '0 -20 0');
-    modelInfo.setAttribute('scale', '30 30 30');
+    modelInfo.setAttribute('scale', '10 10 10');
 
     return modelInfo
 }
