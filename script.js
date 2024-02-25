@@ -31,7 +31,7 @@ const contributeModelTitle = (latitude, longitude) => {
     modelTitle.setAttribute('gltf-model', './chigusadai31orange.glb');
     modelTitle.setAttribute('position', '0 5 0');
     modelTitle.setAttribute('scale', '10 10 10');
-    modelTitle.setAttribute('rotation', '180 0 0')
+    modelTitle.setAttribute('rotation', '0 180 0')
 
     modelTitle.addEventListener('loaded', () => {
         window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
@@ -47,7 +47,7 @@ const contributeModelInfo = (latitude, longitude) => {
     modelInfo.setAttribute('gltf-model', './chigusadai32yellow.glb');
     modelInfo.setAttribute('position', '0 -5 0');
     modelInfo.setAttribute('scale', '10 10 10');
-    modelInfo.setAttribute('rotation', '180 0 0')
+    modelInfo.setAttribute('rotation', '0 180 0')
 
     return modelInfo
 }
