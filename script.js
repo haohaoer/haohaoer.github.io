@@ -19,7 +19,10 @@ function renderPlaces(places) {
         let longitude = place.location.lng;
 
         scene.appendChild(contributeModelTitle(latitude, longitude));
+        scene.addEventListener('click', ()=>{
+            scene.appendChild(contributeModelInfo(latitude, longitude))
     });
+    })
 }
 
 const contributeModelTitle = (latitude, longitude) => {
@@ -33,9 +36,6 @@ const contributeModelTitle = (latitude, longitude) => {
         window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
     });
 
-    modelTitle.addEventListener('click', ()=>{
-        scene.appendChild(contributeModelInfo(latitude, longitude))
-    })
 
     return modelTitle
 }
