@@ -44,7 +44,7 @@ const contributeModelInfo = (latitude, longitude) => {
     let modelInfo = document.createElement('a-entity');
     modelInfo.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
     modelInfo.setAttribute('gltf-model', './chigusadai32yellow.glb');
-    modelInfo.setAttribute('position', '0 -10 0');
+    modelInfo.setAttribute('position', '0 -5 0');
     modelInfo.setAttribute('scale', '10 10 10');
 
     return modelInfo
