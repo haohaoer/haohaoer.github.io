@@ -32,7 +32,7 @@ const contributeModelTitle = (latitude, longitude) => {
     modelTitle.setAttribute('gltf-model', './B1.glb');
     modelTitle.setAttribute('position', '0 3 0');
     modelTitle.setAttribute('scale', '5 5 5');
-    modelTitle.setAttribute('rotation', '0 0 0')
+    modelTitle.setAttribute('rotation', '0 180 0')
 
     modelTitle.addEventListener('loaded', () => {
         window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
@@ -48,7 +48,7 @@ const contributeModelInfo = (latitude, longitude) => {
     modelInfo.setAttribute('gltf-model', './B2.glb');
     modelInfo.setAttribute('position', '0 -3 0');
     modelInfo.setAttribute('scale', '1.5 1.5 1.5');
-    modelInfo.setAttribute('rotation', '0 0 0')
+    modelInfo.setAttribute('rotation', '0 180 0')
 
     return modelInfo
 }
