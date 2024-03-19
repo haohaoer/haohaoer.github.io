@@ -29,7 +29,7 @@ const contributeModelTitle = (latitude, longitude) => {
     let modelTitle = document.createElement('a-entity');
     modelTitle.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
     modelTitle.setAttribute('gltf-model', './A1.glb');
-    modelTitle.setAttribute('position', '0 3 0');
+    modelTitle.setAttribute('position', '0 4 0');
     modelTitle.setAttribute('scale', '8 8 8');
     modelTitle.setAttribute('rotation', '0 0 0')
 
@@ -45,7 +45,7 @@ const contributeModelInfo = (latitude, longitude) => {
     let modelInfo = document.createElement('a-entity');
     modelInfo.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
     modelInfo.setAttribute('gltf-model', './A2.glb');
-    modelInfo.setAttribute('position', '0 -3 0');
+    modelInfo.setAttribute('position', '0 -4 0');
     modelInfo.setAttribute('scale', '3 3 3');
     modelInfo.setAttribute('rotation', '0 0 0')
 
