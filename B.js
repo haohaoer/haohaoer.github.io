@@ -8,8 +8,10 @@ function staticLoadPlaces() {
         {
             name: 'chigusadai',
             location: {
-                lat: 35.7011277,
-                lng: 139.6993951,
+                lat: 35.5374048,
+                lng: 139.5355570,
+//                lat: 35.7011277,
+//                lng: 139.6993951,
             }
         },
     ];
