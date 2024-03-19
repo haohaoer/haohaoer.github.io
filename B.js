@@ -6,7 +6,8 @@ window.onload = () => {
 function staticLoadPlaces() {
     return [{
         name: 'sightB', location: {
-            lat: 35.5374048, lng: 139.5355570,
+            lat: 35.7011277,
+            lng: 139.6993951,
         },
     }];
 }
