@@ -20,10 +20,19 @@ function renderPlaces(places) {
         let longitude = place.location.lng;
 
         scene.appendChild(contributeModelTitle(latitude, longitude));
-        scene.addEventListener('click', ()=>{
-            scene.appendChild(contributeModelInfo(latitude, longitude))
-        });
     })
+}
+
+const onClickIntroductionAR = () => {
+    let scene = document.querySelector('a-scene');
+    const location = staticLoadPlaces().find(place => place.name === 'sightA').location
+    scene.addEventListener('click', ()=>{
+        scene.appendChild(contributeModelInfo(location.lat, location.lng))
+    })
+}
+
+const onClickIntroductionWindow = () => {
+    alert("モチーフの天使は町の象徴で、\n「少しでも明るい光を照らすことができれば」\nとの願いが込められています。")
 }
 
 const contributeModelTitle = (latitude, longitude) => {
