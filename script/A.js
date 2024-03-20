@@ -4,10 +4,12 @@ window.onload = () => {
 };
 
 function staticLoadPlaces() {
+    let url = new URL(window.location.href)
+    let params = url.searchParams
     return [{
         name: 'sightA', location: {
-            lat: 35.7014561,
-            lng: 139.7003657,
+            lat: params.get('latitude') ? params.get('latitude') : 35.7014561,
+            lng: params.get('longitude') ? params.get('longitude') : 139.7003657,
         },
     }];
 }
