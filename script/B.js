@@ -5,8 +5,9 @@ window.onload = () => {
 
 function staticLoadPlaces() {
     return [{
-        name: 'chigusadai', location: {
-            lat: 35.5374048, lng: 139.5355570,
+        name: 'sightB', location: {
+            lat: 35.7011277,
+            lng: 139.6993951,
         },
     }];
 }
@@ -21,16 +22,16 @@ function renderPlaces(places) {
         scene.appendChild(contributeModelTitle(latitude, longitude));
         scene.addEventListener('click', ()=>{
             scene.appendChild(contributeModelInfo(latitude, longitude))
-    });
+        });
     })
 }
 
 const contributeModelTitle = (latitude, longitude) => {
     let modelTitle = document.createElement('a-entity');
     modelTitle.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-    modelTitle.setAttribute('gltf-model', './chigusadai31orange.glb');
-    modelTitle.setAttribute('position', '0 5 0');
-    modelTitle.setAttribute('scale', '10 10 10');
+    modelTitle.setAttribute('gltf-model', '/model/B1.glb');
+    modelTitle.setAttribute('position', '0 3 0');
+    modelTitle.setAttribute('scale', '5 5 5');
     modelTitle.setAttribute('rotation', '0 180 0')
 
     modelTitle.addEventListener('loaded', () => {
@@ -44,9 +45,9 @@ const contributeModelTitle = (latitude, longitude) => {
 const contributeModelInfo = (latitude, longitude) => {
     let modelInfo = document.createElement('a-entity');
     modelInfo.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-    modelInfo.setAttribute('gltf-model', './chigusadai32yellow.glb');
-    modelInfo.setAttribute('position', '0 -5 0');
-    modelInfo.setAttribute('scale', '10 10 10');
+    modelInfo.setAttribute('gltf-model', '/model/B2.glb');
+    modelInfo.setAttribute('position', '0 -3 0');
+    modelInfo.setAttribute('scale', '1.5 1.5 1.5');
     modelInfo.setAttribute('rotation', '0 180 0')
 
     return modelInfo
