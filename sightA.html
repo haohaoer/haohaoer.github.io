@@ -10,12 +10,19 @@
 </head>
 
 <script src="/script/A.js"></script>
-<body>  
+<body>
+
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
          renderer='antialias: true; alpha: true'>
     <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-
 </a-scene>
+
+<div style="position: fixed; bottom: 150px;">
+    <input type="button" id="introductionAR" value="Introduction-AR" onclick="onClickIntroductionAR();">
+    <input type="button" id="b2" value="Introduction-Window" onclick="onClickIntroductionWindow();">
+</div>
+
+<button onclick="buttonclick()">紹介を見る</button>
 </body>
 
 </html>
