@@ -26,9 +26,7 @@ function renderPlaces(places) {
 const onClickIntroductionAR = () => {
     let scene = document.querySelector('a-scene');
     const location = staticLoadPlaces().find(place => place.name === 'sightA').location
-    scene.addEventListener('click', ()=>{
-        scene.appendChild(contributeModelInfo(location.lat, location.lng))
-    })
+    scene.appendChild(contributeModelInfo(location.lat, location.lng))
 }
 
 const onClickIntroductionWindow = () => {
@@ -58,6 +56,9 @@ const contributeModelInfo = (latitude, longitude) => {
     modelInfo.setAttribute('position', '0 -3 0');
     modelInfo.setAttribute('scale', '1.5 1.5 1.5');
     modelInfo.setAttribute('rotation', '0 180 0')
+    modelInfo.addEventListener('loaded', () => {
+        window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
+    })
 
     return modelInfo
 }
