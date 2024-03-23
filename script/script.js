@@ -35,10 +35,9 @@ window.onload = () => {
 
     return navigator.geolocation.getCurrentPosition(position => {
 
-        loadEntities(position.coords).then((entities) => {
-            entities.forEach((entity) => {
-                scene.appendChild(contributeModel(entity))
-            })
+        const entities = loadEntities(position.coords)
+        entities.forEach((entity) => {
+            scene.appendChild(contributeModel(entity))
         })
     }, (err) => console.error('Error in retrieving position', err), {
         enableHighAccuracy: true, maximumAge: 0, timeout: 27000,
