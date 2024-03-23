@@ -47,7 +47,6 @@ const contributeModelTitle = (latitude, longitude) => {
         window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
     });
 
-
     return modelTitle
 }
 
