@@ -15,6 +15,12 @@
         vr-mode-ui='enabled: false'
         embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
-    <a-camera gps-camera rotation-reader></a-camera>
+    <a-assets>
+        <a-asset-item id="model-a" src="/model/A1.glb"></a-asset-item>
+        <a-asset-item id="model-a-introduction" src="/model/A2.glb"></a-asset-item>
+    </a-assets>
+    <a-camera gps-camera rotation-reader>
+        <a-cursor></a-cursor>
+    </a-camera>
 </a-scene>
 </body>
