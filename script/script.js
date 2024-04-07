@@ -47,7 +47,7 @@ const contributeModel = (model) => {
     const entity = document.createElement(model.type)
     entity.setAttribute('gltf-model', model.url)
     entity.setAttribute('id', model.id)
-    entity.setAttribute('title', model.title)
+    entity.setAttribute('title', model.name)
     entity.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')))
 
     setModel(model, entity)
