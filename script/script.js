@@ -4,7 +4,7 @@ const loadEntities = position => [
         type: 'a-entity',
         name: 'マーカーA',
         url: '/model/A1.glb',
-        location: {lat: position.longitude + 0.05, lng: position.longitude + 0.05},
+        location: {lat: position.latitude + 0.05, lng: position.longitude + 0.05},
         position: {x: 0, y: 1.5, z: 0},
         scale: {x: 30, y: 30, z: 30},
     },
@@ -16,6 +16,7 @@ window.onload = () => {
 
     return navigator.geolocation.getCurrentPosition(position => {
         loadEntities(position.coords).forEach((entity) => {
+            console.log(entity)
             let model = contributeModel(entity)
             model.setAttribute('show-introduction-on-mouseenter', '')
             scene.appendChild(model)
