@@ -28,9 +28,13 @@ function renderPlaces(places) {
 }
 
 const onClickIntroductionAR = () => {
-    let scene = document.querySelector('a-scene')
-    const location = staticLoadPlaces().find(place => place.name === 'sightA').location
-    scene.appendChild(contributeModelInfo(location.lat, location.lng))
+    if (document.querySelector('#sightA-introduction')) {
+        document.querySelector('#sightA-introduction').remove()
+    } else {
+        const scene = document.querySelector('a-scene')
+        const location = staticLoadPlaces().find(place => place.name === 'sightA').location
+        scene.appendChild(contributeModelInfo(location.lat, location.lng))
+    }
 }
 
 const onClickIntroductionWindow = () => {
