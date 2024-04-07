@@ -5,8 +5,8 @@ const loadEntities = position => [
         name: 'マーカーA',
         url: '/model/A1.glb',
         location: {lat: position.latitude + 0.1, lng: position.longitude + 0.1},
-        position: {x: 0, y: 0, z: 0},
-        scale: {x: 3, y: 3, z: 30},
+        position: {x: 0, y: 1, z: 0},
+        // scale: {x: 1, y: 1, z: 1},
     },
 ]
 
@@ -25,9 +25,9 @@ const contributeModel = (model) => {
 
 const setModel = (model, entity) => {
     if (model.location) entity.setAttribute('gps-new-entity-place', `latitude: ${model.location.lat}; longitude: ${model.location.lng};`)
-    if (model.position) entity.setAttribute('position', `${model.position.x} ${model.position.y} ${model.position.z}`)
-    if (model.scale) entity.setAttribute('scale', `${model.scale.x} ${model.scale.y} ${model.scale.z}`)
-    if (model.rotation) entity.setAttribute('rotation', `${model.rotation.x} ${model.rotation.y} ${model.rotation.z}`)
+    if (model.position) entity.setAttribute('position', model.position)
+    if (model.scale) entity.setAttribute('scale', model.scale)
+    if (model.rotation) entity.setAttribute('rotation', model.rotation)
 }
 
 AFRAME.registerComponent('show-introduction-on-click', {
@@ -46,9 +46,9 @@ window.onload = () => {
 
     return navigator.geolocation.getCurrentPosition(position => {
         loadEntities(position.coords).forEach((entity) => {
-            console.log(entity)
             let model = contributeModel(entity)
-            model.setAttribute('show-introduction-on-click', '')
+            model.setAttribute('animation__mouseenter', 'gltf-model: /model/A2.glb; startEvents: mouseenter')
+            model.setAttribute('animation__mouseleave', 'gltf-model: /model/A1.glb; startEvents: mouseleave')
             scene.appendChild(model)
         })
     }, (err) => console.error('Error in retrieving position', err), {
