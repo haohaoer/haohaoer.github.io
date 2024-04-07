@@ -1,35 +1,13 @@
 const loadEntities = position => [
     {
+        id: '1',
         type: 'a-entity',
-        name: '近辺マーカー1',
-        url: '#model-a',
+        name: 'マーカーA',
+        url: '/model/A1.glb',
         location: {lat: position.longitude + 0.05, lng: position.longitude + 0.05},
         position: {x: 0, y: 1.5, z: 0},
         scale: {x: 30, y: 30, z: 30},
-    },
-    // {
-    //     type: 'a-link',
-    //     name: '現在地のマーカー',
-    //     location: {lat: position.latitude, lng: position.longitude},
-    //     scale: {x: 10, y: 10, z: 10},
-    // },
-    // , {
-    //     type: 'a-link',
-    //     name: '近辺マーカー2',
-    //     location: {lat: position.longitude + 0.05, lng: position.longitude - 0.05},
-    //     scale: {x: 15, y: 15, z: 15},
-    // }, {
-    //     type: 'a-link',
-    //     name: '近辺マーカー3',
-    //     location: {lat: position.longitude - 0.05, lng: position.longitude + 0.05},
-    //     scale: {x: 15, y: 15, z: 15},
-    //     rotation: {x: 0, y: 0, z: 180},
-    // }, {
-    //     type: 'a-link',
-    //     name: '近辺マーカー4',
-    //     location: {lat: position.longitude - 0.05, lng: position.longitude - 0.05},
-    //     scale: {x: 15, y: 15, z: 15},
-    // },
+    }
 ]
 
 
@@ -40,7 +18,7 @@ window.onload = () => {
 
         const entities = loadEntities(position.coords)
         entities.forEach((entity) => {
-            const model = contributeModel(entity)
+            let model = contributeModel(entity)
             model.setAttribute('show-introduction-on-mouseenter', '')
             scene.appendChild(model)
         })
@@ -51,13 +29,14 @@ window.onload = () => {
 
 AFRAME.registerComponent('show-introduction-on-mouseenter', {
     schema: {
-        gltfModel: '#model-a-introduction',
+        gltfModel: '/model/A2.glb',
     },
 
     init() {
         const data = this.data
         const el = this.el
         this.el.addEventListener('mouseenter', () => {
+            console.log('mouseenter')
             el.setAttribute('gltf-model', data.gltfModel)
         })
     },
@@ -68,6 +47,7 @@ const contributeModel = (model) => {
 
     const entity = document.createElement(model.type)
     entity.setAttribute('gltf-model', model.url)
+    entity.setAttribute('id', model.id)
     entity.setAttribute('title', model.title)
     entity.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')))
 
