@@ -10,37 +10,6 @@ const loadEntities = position => [
     },
 ]
 
-
-window.onload = () => {
-    const scene = document.querySelector('a-scene')
-
-    return navigator.geolocation.getCurrentPosition(position => {
-        loadEntities(position.coords).forEach((entity) => {
-            console.log(entity)
-            let model = contributeModel(entity)
-            model.setAttribute('show-introduction-on-mouseenter', '')
-            scene.appendChild(model)
-        })
-    }, (err) => console.error('Error in retrieving position', err), {
-        enableHighAccuracy: true, maximumAge: 0, timeout: 27000,
-    })
-}
-
-AFRAME.registerComponent('show-introduction-on-mouseenter', {
-    schema: {
-        gltfModel: '/model/A2.glb',
-    },
-
-    init() {
-        const data = this.data
-        const el = this.el
-        this.el.addEventListener('mouseenter', () => {
-            console.log('mouseenter')
-            el.setAttribute('gltf-model', data.gltfModel)
-        })
-    },
-})
-
 const contributeModel = (model) => {
     if (!(model.type === 'a-link' || model.type === 'a-entity')) throw new Error('The type must be "a-link" or "a-entity"')
 
@@ -59,4 +28,34 @@ const setModel = (model, entity) => {
     if (model.position) entity.setAttribute('position', `${model.position.x} ${model.position.y} ${model.position.z}`)
     if (model.scale) entity.setAttribute('scale', `${model.scale.x} ${model.scale.y} ${model.scale.z}`)
     if (model.rotation) entity.setAttribute('rotation', `${model.rotation.x} ${model.rotation.y} ${model.rotation.z}`)
+}
+
+AFRAME.registerComponent('show-introduction-on-mouseenter', {
+    schema: {
+        gltfModel: '/model/A2.glb',
+    },
+
+    init() {
+        const data = this.data
+        const el = this.el
+        this.el.addEventListener('mouseenter', () => {
+            console.log('mouseenter')
+            el.setAttribute('gltf-model', data.gltfModel)
+        })
+    },
+})
+
+window.onload = () => {
+    const scene = document.querySelector('a-scene')
+
+    return navigator.geolocation.getCurrentPosition(position => {
+        loadEntities(position.coords).forEach((entity) => {
+            console.log(entity)
+            let model = contributeModel(entity)
+            model.setAttribute('show-introduction-on-mouseenter', '')
+            scene.appendChild(model)
+        })
+    }, (err) => console.error('Error in retrieving position', err), {
+        enableHighAccuracy: true, maximumAge: 0, timeout: 27000,
+    })
 }
