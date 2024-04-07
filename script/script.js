@@ -7,7 +7,7 @@ const loadEntities = position => [
         location: {lat: position.longitude + 0.05, lng: position.longitude + 0.05},
         position: {x: 0, y: 1.5, z: 0},
         scale: {x: 30, y: 30, z: 30},
-    }
+    },
 ]
 
 
@@ -15,9 +15,7 @@ window.onload = () => {
     const scene = document.querySelector('a-scene')
 
     return navigator.geolocation.getCurrentPosition(position => {
-
-        const entities = loadEntities(position.coords)
-        entities.forEach((entity) => {
+        loadEntities(position.coords).forEach((entity) => {
             let model = contributeModel(entity)
             model.setAttribute('show-introduction-on-mouseenter', '')
             scene.appendChild(model)
