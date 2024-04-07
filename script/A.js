@@ -37,8 +37,31 @@ const onClickIntroductionAR = () => {
     }
 }
 
-const onClickIntroductionWindow = () => {
-    alert("モチーフの天使は町の象徴で、\n「少しでも明るい光を照らすことができれば」\nとの願いが込められています。")
+const onClickRotation = () => {
+    const sightA = document.querySelector('#sightA')
+    const sightAIntroduction = document.querySelector('#sightA-introduction')
+
+    const rotation = sightA.getAttribute('rotation')
+    rotation.y += 15
+
+    sightA.setAttribute('rotation', rotation)
+    sightAIntroduction?.setAttribute('rotation', rotation)
+}
+
+const onClickScale = () => {
+    const sightA = document.querySelector('#sightA')
+    const sightAIntroduction = document.querySelector('#sightA-introduction')
+
+    const scale = sightA.getAttribute('scale')
+    const position = sightA.getAttribute('position')
+    scale.x += 1
+    scale.y += 1
+    scale.z += 1
+    position.y += 2
+
+    sightA.setAttribute('scale', scale)
+    sightA.setAttribute('position', position)
+    sightAIntroduction?.setAttribute('scale', scale)
 }
 
 const contributeModelTitle = (latitude, longitude) => {
