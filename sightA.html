@@ -19,9 +19,11 @@
 </a-scene>
 
 <div style="position: fixed; bottom: 150px;">
-    <input type="button" class="btn" id="introduction-AR" value="紹介文" onclick="onClickIntroductionAR();">
-    <input type="button" class="btn" id="change-rotation" value="　←　" onclick="onClickRotation();">
-    <input type="button" class="btn" id="change-scale" value="change-scale" onclick="onClickScale();">
+    <input type="button" class="btn-big" style="display: block;" id="introduction-AR" value="紹介文" onclick="onClickIntroductionAR();">
+    <input type="button" class="btn-small" style="display: inline-block;" id="change-rotation-let" value="←" onclick="onClickRotationLeft();">
+    <input type="button" class="btn-small" style="display: block;" id="change-rotation-right" value="→" onclick="onClickRotationRight();">
+    <input type="button" class="btn-small" style="display: block;" id="change-scale-big" value="＋" onclick="onClickScaleBig();">
+    <input type="button" class="btn-small" style="display: inline-block;" id="change-scale-small" value="ー" onclick="onClickScaleSmall();">
 </div>
 
 
