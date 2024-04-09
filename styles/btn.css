@@ -2,7 +2,7 @@ input.btn-big {
     text-align: center;
     vertical-align: middle;
     text-decoration: none;
-    width: 150px;
+    width: 120px;
     margin: auto;
     padding: 15px 0;
     font-weight: bold;
@@ -21,7 +21,7 @@ input.btn-small {
     text-align: center;
     vertical-align: middle;
     text-decoration: none;
-    width: 50px;
+    width: 60px;
     margin: auto;
     padding: 15px 0;
     font-weight: bold;
