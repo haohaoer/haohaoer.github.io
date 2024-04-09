@@ -42,7 +42,7 @@ const onClickRotation = () => {
     const sightAIntroduction = document.querySelector('#sightA-introduction')
 
     const rotation = sightA.getAttribute('rotation')
-    rotation.y += 15
+    rotation.y += 30
 
     sightA.setAttribute('rotation', rotation)
     sightAIntroduction?.setAttribute('rotation', rotation)
@@ -54,10 +54,10 @@ const onClickScale = () => {
 
     const scale = sightA.getAttribute('scale')
     const position = sightA.getAttribute('position')
-    scale.x += 1
-    scale.y += 1
-    scale.z += 1
-    position.y += 2
+    scale.x = scale.x * 1.1
+    scale.y = scale.y * 1.1
+    scale.z = scale.z * 1.1
+    position.y = position.y * 1.15
 
     sightA.setAttribute('scale', scale)
     sightA.setAttribute('position', position)
@@ -68,10 +68,10 @@ const contributeModelTitle = (latitude, longitude) => {
     let modelTitle = document.createElement('a-entity')
     modelTitle.setAttribute('id', 'sightA')
     modelTitle.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
-    modelTitle.setAttribute('gltf-model', '/model/A1.glb')
+    modelTitle.setAttribute('gltf-model', '/model/Atitle.glb')
     modelTitle.setAttribute('position', '0 3 0')
     modelTitle.setAttribute('scale', '5 5 5')
-    modelTitle.setAttribute('rotation', '0 180 0')
+    modelTitle.setAttribute('rotation', '0 0 0')
 
     modelTitle.addEventListener('loaded', () => {
         window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
@@ -84,10 +84,10 @@ const contributeModelInfo = (latitude, longitude) => {
     let modelInfo = document.createElement('a-entity')
     modelInfo.setAttribute('id', 'sightA-introduction')
     modelInfo.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
-    modelInfo.setAttribute('gltf-model', '/model/A2.glb')
+    modelInfo.setAttribute('gltf-model', '/model/Aintro.glb')
     modelInfo.setAttribute('position', '0 -3 0')
-    modelInfo.setAttribute('scale', '1.5 1.5 1.5')
-    modelInfo.setAttribute('rotation', '0 180 0')
+    modelInfo.setAttribute('scale', '5 5 5')
+    modelInfo.setAttribute('rotation', '0 0 0')
     modelInfo.addEventListener('loaded', () => {
         window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
     })
