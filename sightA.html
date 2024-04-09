@@ -7,6 +7,7 @@
             src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
     <script type='text/javascript'
             src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+    <link href="/styles/btn.css" rel="stylesheet" />
 </head>
 
 <script src="/script/A.js"></script>
@@ -18,10 +19,14 @@
 </a-scene>
 
 <div style="position: fixed; bottom: 150px;">
-    <input type="button" id="introduction-AR" value="Introduction-AR" onclick="onClickIntroductionAR();">
-    <input type="button" id="change-rotation" value="change-rotation" onclick="onClickRotation();">
-    <input type="button" id="change-scale" value="change-scale" onclick="onClickScale();">
+    <input type="button" class="btn" id="introduction-AR" value="紹介文" onclick="onClickIntroductionAR();">
+    <input type="button" class="btn" id="change-rotation" value="　←　" onclick="onClickRotation();">
+    <input type="button" class="btn" id="change-scale" value="change-scale" onclick="onClickScale();">
 </div>
+
+
+
+
 </body>
 
 </html>
