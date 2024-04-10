@@ -41,19 +41,22 @@ input.btn-big:hover {
 
 
 a.btn-link {
+    display: block;
+    font-size: 200%;
     text-align: center;
     vertical-align: middle;
     text-decoration: none;
-    width: 150px;
+    width: 120px;
     margin: auto;
-    padding: 15px 0;
+    padding: 1rem 4rem;
     font-weight: bold;
     border: 2px solid #27acd9;
-    color: #27acd9;
+    background: #27acd9;
+    color: #fff;
     border-radius: 100vh;
     transition: 0.5s;
 }
 a.btn-link:hover {
-    color: #fff;
-    background: #27acd9;
+    color: #27acd9;
+    background: #fff;
 }
