@@ -141,5 +141,8 @@ const contributeModelPin = () => {
   // modelPin.setAttribute('far',  PIN_MAX_DISTANCE)
   // modelPin.setAttribute('near', PIN_MIN_DISTANCE)
 
+  modelPin.addEventListener('loaded', () => {
+    window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
+  })
   return modelPin
 }
