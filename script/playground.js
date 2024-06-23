@@ -104,7 +104,9 @@ const contributeModelTitle = (latitude, longitude) => {
   modelTitle.setAttribute('scale', '5 5 5')
   modelTitle.setAttribute('rotation', '0 180 0')
 
+  const distanceMsg = document.getElementById('distance')
   modelTitle.addEventListener('gps-entity-place-update-positon', (event) => {
+    distanceMsg.textContent = `あと${event.detail.distance}m`;
     console.log('sigthA: ' + event.detail.distance)
     if (event.detail.distance < 100) {
       modelTitle.setAttribute('gltf-model', '/model/Aintro.glb')
