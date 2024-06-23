@@ -1,7 +1,3 @@
-const PIN_MAX_DISTANCE = '50' // 用户和模型的距离小于此数值后开始显示pin
-const PIN_MIN_DISTANCE = '10' // 用户和模型的距离小于此数值后不再显示pin, 建议和MODEL_MAX_DISTANCE的值相等
-const MODEL_MAX_DISTANCE = '10' // 用户模型的距离小于此数值后开始显示模型
-
 window.onload = () => {
   let places = staticLoadPlaces()
   renderPlaces(places)
@@ -131,21 +127,4 @@ const contributeModelInfo = (latitude, longitude) => {
   })
 
   return modelInfo
-}
-
-const contributeModelPin = (latitude, longitude) => {
-  let modelPin = document.createElement('a-entity')
-  modelPin.setAttribute('id', 'pin')
-  modelPin.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
-  modelPin.setAttribute('gltf-model', '/model/Btitle.glb')
-  modelPin.setAttribute('position', '0 6 0')
-  modelPin.setAttribute('scale', '5 5 5')
-  modelPin.setAttribute('rotation', '0 180 0')
-  // modelPin.setAttribute('far',  '10')
-  // modelPin.setAttribute('near', PIN_MIN_DISTANCE)
-
-  modelPin.addEventListener('loaded', () => {
-    window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
-  })
-  return modelPin
 }
