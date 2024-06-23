@@ -1,6 +1,6 @@
-const PIN_MAX_DISTANCE = '' // 用户和模型的距离小于此数值后开始显示pin
+const PIN_MAX_DISTANCE = 100 // 用户和模型的距离小于此数值后开始显示pin
 const PIN_MIN_DISTANCE = 15 // 用户和模型的距离小于此数值后不再显示pin, 建议和MODEL_MAX_DISTANCE的值相等
-const MODEL_MAX_DISTANCE = 15 // 用户模型的距离小于此数值后开始显示模型
+const MODEL_MAX_DISTANCE = 100 // 用户模型的距离小于此数值后开始显示模型
 
 window.onload = () => {
   let places = staticLoadPlaces()
