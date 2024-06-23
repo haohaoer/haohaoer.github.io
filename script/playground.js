@@ -103,14 +103,13 @@ const contributeModelTitle = (latitude, longitude) => {
   modelTitle.setAttribute('position', '0 3 0')
   modelTitle.setAttribute('scale', '5 5 5')
   modelTitle.setAttribute('rotation', '0 180 0')
-  modelTitle.setAttribute('maxDistance', '10')
 
   modelTitle.addEventListener('gps-entity-place-update-positon', (event) => {
     console.log('sigthA: ' + event.detail.distance)
-    if (event.detail.distance < 20) {
-      modelTitle.updateAttribute('gltf-model', '/model/Aintro.glb')
+    if (event.detail.distance < 100) {
+      modelTitle.setAttribute('gltf-model', '/model/Aintro.glb')
     } else {
-      modelTitle.updateAttribute('gltf-model', '/model/Atitle.glb')
+      modelTitle.setAttribute('gltf-model', '/model/Atitle.glb')
     }
   })
 
@@ -125,7 +124,6 @@ const contributeModelInfo = (latitude, longitude) => {
   modelInfo.setAttribute('position', '0 -3 0')
   modelInfo.setAttribute('scale', '5 5 5')
   modelInfo.setAttribute('rotation', '0 180 0')
-  modelInfo.setAttribute('far', '10')
 
   modelInfo.addEventListener('loaded', () => {
     window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
