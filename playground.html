@@ -17,8 +17,10 @@
 
   <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
     renderer='antialias: true; alpha: true'>
-    <a-camera
-      gps-projected-camera='gpsMinDistance: 3; simulateLatitude: 35.5381647; simulateAltitude: 139.5351330'></a-camera>
+    <a-camera gps-projected-camera></a-camera>
+    <!--
+    <a-camera gps-projected-camera='simulateLatitude: 35.5381647; simulateAltitude: 139.5351330'></a-camera>
+    -->
   </a-scene>
 
   <div style="position: fixed; bottom: 5%;">

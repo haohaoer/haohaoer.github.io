@@ -27,24 +27,6 @@ function renderPlaces(places) {
     let latitude = place.location.lat
     let longitude = place.location.lng
 
-    const compoundEntity = document.createElement("a-entity")
-    compoundEntity.setAttribute('id', 'compoundEntity')
-    compoundEntity.setAttribute('gps-projected-entity-place', { latitude: latitude, longitude: longitude })
-
-    const title = document.createElement("a-text")
-    title.setAttribute("scale", { x: 100, y: 100, z: 100 })
-    title.setAttribute("position", { x: 0, y: 3, z: 0 })
-    title.setAttribute("look-at", "[gps-projected-camera]")
-    title.setAttribute("value", "天使の絵の具")
-    title.setAttribute("align", "center")
-    compoundEntity.appendChild(title)
-
-    const info = document.createElement("a-text")
-    info.setAttribute("scale", { x: 100, y: 100, z: 100 })
-    info.setAttribute("value", "This is a meaningless string of text")
-    compoundEntity.appendChild(info)
-
-    scene.appendChild(compoundEntity)
     scene.appendChild(contributeModelTitle(latitude, longitude))
   })
 }
@@ -123,8 +105,13 @@ const contributeModelTitle = (latitude, longitude) => {
   modelTitle.setAttribute('rotation', '0 180 0')
   modelTitle.setAttribute('maxDistance', '10')
 
-  modelTitle.addEventListener('loaded', () => {
-    window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
+  modelTitle.addEventListener('gps-entity-place-update-positon', (event) => {
+    console.log('sigthA: ' + event.detail.distance)
+    if (event.detail.distance < 20) {
+      modelTitle.updateAttribute('gltf-model', '/model/Aintro.glb')
+    } else {
+      modelTitle.updateAttribute('gltf-model', '/model/Atitle.glb')
+    }
   })
 
   return modelTitle
