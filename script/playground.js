@@ -1,9 +1,11 @@
 const SHOW_SIGHT_TITLE_AND_INFO_DISTANCE = 15
 
 window.onload = () => {
-    let places = [{
-        name: 'sightP', location: { lat: 35.7089019, lng: 139.7206617 }, modelPath: '/model/PTitle.glb',
-    }, { name: 'sightQ', location: { lat: 35.7091851, lng: 139.7201655 }, modelPath: '/model/QTitle.glb' }]
+    let places = [
+        { name: 'sightA', location: { lat: 35.5378780, lng: 139.5352004 }, modelPath: '/model/ATitle.glb' },
+        { name: 'sightP', location: { lat: 35.7089019, lng: 139.7206617 }, modelPath: '/model/PTitle.glb' },
+        { name: 'sightQ', location: { lat: 35.7091851, lng: 139.7201655 }, modelPath: '/model/QTitle.glb' },
+    ]
     renderPlaces(places)
 }
 
