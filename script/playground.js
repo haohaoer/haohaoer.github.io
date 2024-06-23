@@ -104,7 +104,7 @@ const contributeModelTitle = (latitude, longitude) => {
   modelTitle.setAttribute('position', '0 3 0')
   modelTitle.setAttribute('scale', '5 5 5')
   modelTitle.setAttribute('rotation', '0 180 0')
-  modelTitle.setAttribute('maxDistance', (MODEL_MAX_DISTANCE).toString)
+  modelTitle.setAttribute('far', (MODEL_MAX_DISTANCE).toString)
 
   modelTitle.addEventListener('loaded', () => {
     window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
@@ -121,7 +121,7 @@ const contributeModelInfo = (latitude, longitude) => {
   modelInfo.setAttribute('position', '0 -3 0')
   modelInfo.setAttribute('scale', '5 5 5')
   modelInfo.setAttribute('rotation', '0 180 0')
-  modelInfo.setAttribute('maxDistance', (MODEL_MAX_DISTANCE).toString)
+  modelInfo.setAttribute('far', (MODEL_MAX_DISTANCE).toString)
 
   modelInfo.addEventListener('loaded', () => {
     window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
@@ -134,12 +134,12 @@ const contributeModelPin = () => {
   let modelPin = document.createElement('a-entity')
   modelPin.setAttribute('id', 'pin')
   modelPin.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
-  modelPin.setAttribute('gltf-model', '/model/Atitle.glb')
+  modelPin.setAttribute('gltf-model', '/model/Btitle.glb')
   modelPin.setAttribute('position', '0 6 0')
   modelPin.setAttribute('scale', '5 5 5')
   modelPin.setAttribute('rotation', '0 180 0')
-  modelPin.setAttribute('maxDistance', (PIN_MAX_DISTANCE).toString)
-  modelPin.setAttribute('minDistance', (PIN_MIN_DISTANCE).toString)
+  modelPin.setAttribute('far', (PIN_MAX_DISTANCE).toString)
+  modelPin.setAttribute('near', (PIN_MIN_DISTANCE).toString)
 
   return modelPin
 }
