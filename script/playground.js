@@ -45,6 +45,7 @@ function renderPlaces(places) {
     compoundEntity.appendChild(info)
 
     scene.appendChild(compoundEntity)
+    scene.appendChild(contributeModelTitle(latitude, longitude))
   })
 }
 
