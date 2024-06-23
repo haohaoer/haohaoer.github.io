@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>sightA</title>
+    <title>playground</title>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script type='text/javascript'
             src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
@@ -15,7 +15,7 @@
 
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
          renderer='antialias: true; alpha: true'>
-    <a-camera gps-new-camera='gpsMinDistance: 3'></a-camera>
+    <a-camera gps-projected-camera='gpsMinDistance: 3'></a-camera>
 </a-scene>
 
 <div style="position: fixed; bottom: 5%;">
@@ -25,9 +25,6 @@
     <input type="button" class="btn-small" style="display: block; float: left;" id="change-scale-big" value="＋" onclick="onClickScaleBig();">
     <input type="button" class="btn-small" style="display: flex; justify-content: center;" id="change-scale-small" value="ー" onclick="onClickScaleSmall();">
 </div>
-
-
-
 
 </body>
 

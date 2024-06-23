@@ -13,8 +13,8 @@ function staticLoadPlaces() {
   return [
     {
       name: 'sightA', location: {
-        lat: params.get('latitude') ? params.get('latitude') : 35.7014561,
-        lng: params.get('longitude') ? params.get('longitude') : 139.7003657,
+        lat: params.get('latitude') ? params.get('latitude') : 35.5378780,
+        lng: params.get('longitude') ? params.get('longitude') : 139.5352004,
       },
     },
   ]
@@ -27,8 +27,24 @@ function renderPlaces(places) {
     let latitude = place.location.lat
     let longitude = place.location.lng
 
-    scene.appendChild(contributeModelTitle(latitude, longitude))
-    scene.appendChild(contributeModelPin(latitude, longitude))
+    const compoundEntity = document.createElement("a-entity")
+    compoundEntity.setAttribute('id', 'compoundEntity')
+    compoundEntity.setAttribute('gps-projected-entity-place', { latitude: latitude, longitude: longitude })
+
+    const title = document.createElement("a-text")
+    title.setAttribute("scale", { x: 100, y: 100, z: 100 })
+    title.setAttribute("position", { x: 0, y: 3, z: 0 })
+    title.setAttribute("look-at", "[gps-projected-camera]")
+    title.setAttribute("value", "天使の絵の具")
+    title.setAttribute("align", "center")
+    compoundEntity.appendChild(title)
+
+    const info = document.createElement("a-text")
+    info.setAttribute("scale", { x: 100, y: 100, z: 100 })
+    info.setAttribute("value", "This is a meaningless string of text")
+    compoundEntity.appendChild(info)
+
+    scene.appendChild.appendChild(compoundEntity)
   })
 }
 
@@ -99,7 +115,7 @@ const onClickScaleSmall = () => {
 const contributeModelTitle = (latitude, longitude) => {
   let modelTitle = document.createElement('a-entity')
   modelTitle.setAttribute('id', 'sightA')
-  modelTitle.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
+  modelTitle.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
   modelTitle.setAttribute('gltf-model', '/model/Atitle.glb')
   modelTitle.setAttribute('position', '0 3 0')
   modelTitle.setAttribute('scale', '5 5 5')
@@ -116,7 +132,7 @@ const contributeModelTitle = (latitude, longitude) => {
 const contributeModelInfo = (latitude, longitude) => {
   let modelInfo = document.createElement('a-entity')
   modelInfo.setAttribute('id', 'sightA-introduction')
-  modelInfo.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
+  modelInfo.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
   modelInfo.setAttribute('gltf-model', '/model/Aintro.glb')
   modelInfo.setAttribute('position', '0 -3 0')
   modelInfo.setAttribute('scale', '5 5 5')
@@ -133,7 +149,7 @@ const contributeModelInfo = (latitude, longitude) => {
 const contributeModelPin = (latitude, longitude) => {
   let modelPin = document.createElement('a-entity')
   modelPin.setAttribute('id', 'pin')
-  modelPin.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
+  modelPin.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
   modelPin.setAttribute('gltf-model', '/model/Btitle.glb')
   modelPin.setAttribute('position', '0 6 0')
   modelPin.setAttribute('scale', '5 5 5')
