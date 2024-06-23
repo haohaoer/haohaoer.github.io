@@ -1,6 +1,6 @@
-const PIN_MAX_DISTANCE = 100 // 用户和模型的距离小于此数值后开始显示pin
-const PIN_MIN_DISTANCE = 15 // 用户和模型的距离小于此数值后不再显示pin, 建议和MODEL_MAX_DISTANCE的值相等
-const MODEL_MAX_DISTANCE = 100 // 用户模型的距离小于此数值后开始显示模型
+// const PIN_MAX_DISTANCE = 200 // 用户和模型的距离小于此数值后开始显示pin
+// const PIN_MIN_DISTANCE = 15 // 用户和模型的距离小于此数值后不再显示pin, 建议和MODEL_MAX_DISTANCE的值相等
+const MODEL_MAX_DISTANCE = 200 // 用户模型的距离小于此数值后开始显示模型
 
 window.onload = () => {
   let places = staticLoadPlaces()
@@ -136,8 +136,8 @@ const contributeModelPin = () => {
   modelPin.setAttribute('position', '0 4 0')
   modelPin.setAttribute('scale', '5 5 5')
   modelPin.setAttribute('rotation', '0 180 0')
-  modelPin.setAttribute('maxDistance', (PIN_MAX_DISTANCE).toString)
-  modelPin.setAttribute('minDistance', (PIN_MIN_DISTANCE).toString)
+  // modelPin.setAttribute('maxDistance', (PIN_MAX_DISTANCE).toString)
+  // modelPin.setAttribute('minDistance', (PIN_MIN_DISTANCE).toString)
 
   return modelPin
 }
