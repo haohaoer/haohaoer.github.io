@@ -1,6 +1,6 @@
-const PIN_MAX_DISTANCE = 50 // 用户和模型的距离小于此数值后开始显示pin
-const PIN_MIN_DISTANCE = 10 // 用户和模型的距离小于此数值后不再显示pin, 建议和MODEL_MAX_DISTANCE的值相等
-const MODEL_MAX_DISTANCE = 10 // 用户模型的距离小于此数值后开始显示模型
+const PIN_MAX_DISTANCE = '50' // 用户和模型的距离小于此数值后开始显示pin
+const PIN_MIN_DISTANCE = '10' // 用户和模型的距离小于此数值后不再显示pin, 建议和MODEL_MAX_DISTANCE的值相等
+const MODEL_MAX_DISTANCE = '10' // 用户模型的距离小于此数值后开始显示模型
 
 window.onload = () => {
   let places = staticLoadPlaces()
@@ -104,7 +104,7 @@ const contributeModelTitle = (latitude, longitude) => {
   modelTitle.setAttribute('position', '0 3 0')
   modelTitle.setAttribute('scale', '5 5 5')
   modelTitle.setAttribute('rotation', '0 180 0')
-  modelTitle.setAttribute('far', (MODEL_MAX_DISTANCE).toString)
+  modelTitle.setAttribute('far', MODEL_MAX_DISTANCE)
 
   modelTitle.addEventListener('loaded', () => {
     window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
@@ -121,7 +121,7 @@ const contributeModelInfo = (latitude, longitude) => {
   modelInfo.setAttribute('position', '0 -3 0')
   modelInfo.setAttribute('scale', '5 5 5')
   modelInfo.setAttribute('rotation', '0 180 0')
-  modelInfo.setAttribute('far', (MODEL_MAX_DISTANCE).toString)
+  modelInfo.setAttribute('far', MODEL_MAX_DISTANCE)
 
   modelInfo.addEventListener('loaded', () => {
     window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
@@ -138,8 +138,8 @@ const contributeModelPin = () => {
   modelPin.setAttribute('position', '0 6 0')
   modelPin.setAttribute('scale', '5 5 5')
   modelPin.setAttribute('rotation', '0 180 0')
-  modelPin.setAttribute('far', (PIN_MAX_DISTANCE).toString)
-  modelPin.setAttribute('near', (PIN_MIN_DISTANCE).toString)
+  modelPin.setAttribute('far',  PIN_MAX_DISTANCE)
+  modelPin.setAttribute('near', PIN_MIN_DISTANCE)
 
   return modelPin
 }
