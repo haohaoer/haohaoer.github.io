@@ -130,7 +130,7 @@ const contributeModelInfo = (latitude, longitude) => {
   return modelInfo
 }
 
-const contributeModelPin = () => {
+const contributeModelPin = (latitude, longitude) => {
   let modelPin = document.createElement('a-entity')
   modelPin.setAttribute('id', 'pin')
   modelPin.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
