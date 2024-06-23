@@ -104,7 +104,7 @@ const contributeModelTitle = (latitude, longitude) => {
   modelTitle.setAttribute('position', '0 3 0')
   modelTitle.setAttribute('scale', '5 5 5')
   modelTitle.setAttribute('rotation', '0 180 0')
-  modelTitle.setAttribute('maxDistance', MODEL_MAX_DISTANCE)
+  modelTitle.setAttribute('maxDistance', '10')
 
   modelTitle.addEventListener('loaded', () => {
     window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
@@ -121,7 +121,7 @@ const contributeModelInfo = (latitude, longitude) => {
   modelInfo.setAttribute('position', '0 -3 0')
   modelInfo.setAttribute('scale', '5 5 5')
   modelInfo.setAttribute('rotation', '0 180 0')
-  modelInfo.setAttribute('maxDistance', MODEL_MAX_DISTANCE)
+  modelInfo.setAttribute('far', '10')
 
   modelInfo.addEventListener('loaded', () => {
     window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
@@ -138,7 +138,7 @@ const contributeModelPin = (latitude, longitude) => {
   modelPin.setAttribute('position', '0 6 0')
   modelPin.setAttribute('scale', '5 5 5')
   modelPin.setAttribute('rotation', '0 180 0')
-  // modelPin.setAttribute('far',  PIN_MAX_DISTANCE)
+  // modelPin.setAttribute('far',  '10')
   // modelPin.setAttribute('near', PIN_MIN_DISTANCE)
 
   modelPin.addEventListener('loaded', () => {
