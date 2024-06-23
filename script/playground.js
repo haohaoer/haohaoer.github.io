@@ -104,7 +104,7 @@ const contributeModelTitle = (latitude, longitude) => {
   modelTitle.setAttribute('position', '0 3 0')
   modelTitle.setAttribute('scale', '5 5 5')
   modelTitle.setAttribute('rotation', '0 180 0')
-  modelInfo.setAttribute('maxDistance', (MODEL_MAX_DISTANCE).toString)
+  modelTitle.setAttribute('maxDistance', (MODEL_MAX_DISTANCE).toString)
 
   modelTitle.addEventListener('loaded', () => {
     window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
