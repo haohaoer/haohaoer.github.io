@@ -9,27 +9,11 @@
     <script type='text/javascript'
             src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
     <link href="/styles/btn.css" rel="stylesheet"/>
-    <style>
-        #distance {
-            position: fixed;
-            z-index: 10000;
-            background-color: rgba(0, 0, 0, .8);
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            top: 10px;
-            left: 5%;
-            width: 90%;
-            display: block;
-        }
-    </style>
 </head>
 
 <script src="/script/playground.js"></script>
 
 <body>
-<div id="distance"></div>
-
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
          renderer='antialias: true; alpha: true'>
     <!--    <a-camera gps-projected-camera="maxDistance: 100"></a-camera>-->
