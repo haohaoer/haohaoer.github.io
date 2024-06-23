@@ -44,7 +44,7 @@ function renderPlaces(places) {
     info.setAttribute("value", "This is a meaningless string of text")
     compoundEntity.appendChild(info)
 
-    scene.appendChild.appendChild(compoundEntity)
+    scene.appendChild(compoundEntity)
   })
 }
 
