@@ -9,8 +9,10 @@ function staticLoadPlaces() {
     return [
         {
             name: 'sightA', location: {
-                lat: params.get('latitude') ? params.get('latitude') : 35.7014561,
-                lng: params.get('longitude') ? params.get('longitude') : 139.7003657,
+                lat: params.get('latitude') ? params.get('latitude') : 35.5382428,
+                lng: params.get('longitude') ? params.get('longitude') : 139.5360104,
+                // lat: params.get('latitude') ? params.get('latitude') : 35.7014561,
+                // lng: params.get('longitude') ? params.get('longitude') : 139.7003657,
             },
         },
     ]
