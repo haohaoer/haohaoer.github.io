@@ -64,55 +64,44 @@ const onClickIntroductionAR = () => {
 }
 
 const onClickRotationLeft = () => {
-    const sightA = document.querySelector('#sightA')
-    const sightAIntroduction = document.querySelector('#sightA-introduction')
+    Object.keys(titleAttribute.rotation).forEach(k => titleAttribute.rotation += 30)
+    Object.keys(introAttribute.rotation).forEach(k => introAttribute.rotation += 30)
 
-    const rotation = sightA.getAttribute('rotation')
-    rotation.y += 30
-
-    sightA.setAttribute('rotation', rotation)
-    sightAIntroduction?.setAttribute('rotation', rotation)
+    document.querySelectorAll('#model-title').forEach(title => title.setAttribute('rotation', titleAttribute.rotation))
+    document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('rotation', introAttribute.rotation))
 }
 
 const onClickRotationRight = () => {
-    const sightA = document.querySelector('#sightA')
-    const sightAIntroduction = document.querySelector('#sightA-introduction')
+    Object.keys(titleAttribute.rotation).forEach(k => titleAttribute.rotation -= 30)
+    Object.keys(introAttribute.rotation).forEach(k => introAttribute.rotation -= 30)
 
-    const rotation = sightA.getAttribute('rotation')
-    rotation.y -= 30
+    document.querySelectorAll('#model-title').forEach(title => title.setAttribute('rotation', titleAttribute.rotation))
+    document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('rotation', introAttribute.rotation))
 
-    sightA.setAttribute('rotation', rotation)
-    sightAIntroduction?.setAttribute('rotation', rotation)
 }
 
 const onClickScaleBig = () => {
-    const sightA = document.querySelector('#sightA')
-    const sightAIntroduction = document.querySelector('#sightA-introduction')
+    Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] *= 1.1)
+    titleAttribute.position.y *= 1.15
+    document.querySelectorAll('#model-title').forEach(title => {
+        title.setAttribute('scale', titleAttribute.scale)
+        title.setAttribute('position', titleAttribute.position)
+    })
 
-    const scale = sightA.getAttribute('scale')
-    const position = sightA.getAttribute('position')
-    scale.x = scale.x * 1.1
-    scale.y = scale.y * 1.1
-    scale.z = scale.z * 1.1
-    position.y = position.y * 1.15
-
-    sightA.setAttribute('scale', scale)
-    sightA.setAttribute('position', position)
-    sightAIntroduction?.setAttribute('scale', scale)
+    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] *= 1.1)
+    document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('scale', introAttribute.scale))
 }
 
 const onClickScaleSmall = () => {
     Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] *= 0.9)
     titleAttribute.position.y *= 0.85
-    document.querySelectorAll('#model-title').forEach((title) => {
+    document.querySelectorAll('#model-title').forEach(title => {
         title.setAttribute('scale', titleAttribute.scale)
         title.setAttribute('position', titleAttribute.position)
     })
 
     Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] *= 0.9)
-    document.querySelectorAll('#model-intro').forEach((intro) => {
-        intro.setAttribute('scale', introAttribute.scale)
-    })
+    document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('scale', introAttribute.scale))
 }
 
 const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => {
