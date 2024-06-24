@@ -2,7 +2,7 @@ const STATIC_PLACES = [
     {
         name: 'sightA',
         location: [35.538381890918494, 139.53549068386437],
-        modelPath: { title: '/model/ATitle.glb', intro: '/model/Aintro.glb' },
+        modelPath: { title: '/model/Atitle.glb', intro: '/model/Aintro.glb' },
     },
     {
         name: 'sightP',
