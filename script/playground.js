@@ -2,7 +2,7 @@ const SHOW_SIGHT_TITLE_AND_INFO_DISTANCE = 15
 
 window.onload = () => {
     let places = [
-        { name: 'sightA', location: { lat: 35.5378780, lng: 139.5352004 }, modelPath: '/model/ATitle.glb' },
+        { name: 'sightA', location: { lat: 35.538387, lng:  139.535474 }, modelPath: '/model/ATitle.glb' },
         { name: 'sightP', location: { lat: 35.7089019, lng: 139.7206617 }, modelPath: '/model/PTitle.glb' },
         { name: 'sightQ', location: { lat: 35.7091851, lng: 139.7201655 }, modelPath: '/model/QTitle.glb' },
     ]
@@ -91,7 +91,7 @@ const contributeModelPin = (latitude, longitude, modelPath = '/model/pin.glb') =
     modelPin.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
     modelPin.setAttribute('gltf-model', modelPath)
     modelPin.setAttribute('position', '0 6 0')
-    modelPin.setAttribute('scale', '5 5 5')
+    modelPin.setAttribute('scale', '1 1 1')
     return modelPin
 }
 
@@ -99,16 +99,18 @@ const contributeModelTitle = (latitude, longitude, modelPath) => {
     let modelTitle = document.createElement('a-entity')
     modelTitle.setAttribute('id', 'sightA')
     modelTitle.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
-    modelTitle.setAttribute('gltf-model', '')
-    modelTitle.setAttribute('position', '0 3 0')
-    modelTitle.setAttribute('scale', '5 5 5')
-    modelTitle.setAttribute('rotation', '0 180 0')
 
     modelTitle.addEventListener('gps-entity-place-update-position', (event) => {
         if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INFO_DISTANCE) {
             modelTitle.setAttribute('gltf-model', modelPath)
+            modelTitle.setAttribute('position', '0 3 0')
+            modelTitle.setAttribute('scale', '2 2 2')
+            modelTitle.setAttribute('rotation', '0 180 0')
         } else {
-            modelTitle.setAttribute('gltf-model', '')
+            modelTitle.removeAttribute('gltf-model')
+            modelTitle.removeAttribute('position')
+            modelTitle.removeAttribute('scale')
+            modelTitle.removeAttribute('rotation')
         }
     })
 
