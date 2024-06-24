@@ -125,20 +125,6 @@ const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => 
     modelPin.setAttribute('titlePath', titlePath)
     modelPin.setAttribute('introPath', introPath)
 
-    modelPin.addEventListener('gps-entity-place-added', (event)=> {
-        console.log(`PIN_${name}: gps-entity-place-added`)
-        console.log(event)
-    })
-
-    modelPin.addEventListener('gps-entity-place-update-position', (event) => {
-        console.log(`PIN_${name} : gps-entity-place-update-position`)
-        console.log(modelPin.getAttribute('gps-projected-entity-place'))
-        console.log(event)
-        if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE){
-            console.log(modelPin.getAttribute('gps-projected-entity-place'))
-            modelPin.appendChild(contributeModelTitle(latitude, longitude, titlePath))
-        }
-    })
     return modelPin
 }
 
@@ -151,11 +137,7 @@ const contributeModelTitle = (latitude, longitude, modelPath) => {
     modelTitle.setAttribute('position', position)
     modelTitle.setAttribute('scale', scale)
     modelTitle.setAttribute('rotation', rotation)
-    modelTitle.setAttribute('visible', false)
 
-    modelTitle.addEventListener('gps-entity-place-update-position', (event) => {
-        modelTitle.setAttribute('visible', (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE))
-    })
     return modelTitle
 }
 
@@ -169,12 +151,6 @@ const contributeModelIntro = (latitude, longitude, modelPath) => {
     modelIntro.setAttribute('position', position)
     modelIntro.setAttribute('scale', scale)
     modelIntro.setAttribute('rotation', rotation)
-    modelIntro.setAttribute('is-shown', false)
-    modelIntro.setAttribute('visible', false)
 
-    modelIntro.addEventListener('gps-entity-place-update-position', (event) => {
-        let isShown = modelIntro.getAttribute('is-shown') === "true"
-        modelIntro.setAttribute('visible', isShown && (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE))
-    })
     return modelIntro
 }
