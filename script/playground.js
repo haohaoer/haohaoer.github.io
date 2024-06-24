@@ -1,12 +1,47 @@
-const SHOW_SIGHT_TITLE_AND_INFO_DISTANCE = 15
+const STATIC_PLACES = [
+    {
+        name: 'sightA',
+        location: { lat: 35.538387, lng: 139.535474 },
+        modelPath: { title: '/model/ATitle.glb', intro: '/model/Aintro.glb' },
+    },
+    {
+        name: 'sightP',
+        location: { lat: 35.7089019, lng: 139.7206617 },
+        modelPath: { title: '/model/PTitle.glb', intro: '/model/PIntro.glb' },
+    },
+    {
+        name: 'sightQ',
+        location: { lat: 35.7091851, lng: 139.7201655 },
+        modelPath: { title: '/model/QTitle.glb', intro: '/model/QIntro.glb' },
+    },
+]
+
+const SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE = 15
+
+// 所有的 modelTitle 共用同样的设定
+// modelTitle 仅经纬度及模型不同
+const titleAttribute = {
+    position: { x: 0, y: 3, z: 0 },
+    scale: { x: 2, y: 2, z: 2 },
+    rotation: { x: 0, y: 180, z: 0 },
+}
+
+const introAttribute = {
+    position: { x: 0, y: -3, z: 0 },
+    scale: { x: 5, y: 5, z: 5 },
+    rotation: { x: 0, y: 180, z: 0 },
+}
 
 window.onload = () => {
-    let places = [
-        { name: 'sightA', location: { lat: 35.538387, lng:  139.535474 }, modelPath: '/model/ATitle.glb' },
-        { name: 'sightP', location: { lat: 35.7089019, lng: 139.7206617 }, modelPath: '/model/PTitle.glb' },
-        { name: 'sightQ', location: { lat: 35.7091851, lng: 139.7201655 }, modelPath: '/model/QTitle.glb' },
-    ]
-    renderPlaces(places)
+    let scene = document.querySelector('a-scene')
+
+    STATIC_PLACES.forEach((place) => {
+        let latitude = place.location.lat
+        let longitude = place.location.lng
+
+        scene.appendChild(contributeModelPin(latitude, longitude))
+        scene.appendChild(contributeModelTitle(latitude, longitude, place.modelPath.title))
+    })
 }
 
 function renderPlaces(places) {
@@ -97,15 +132,17 @@ const contributeModelPin = (latitude, longitude, modelPath = '/model/pin.glb') =
 
 const contributeModelTitle = (latitude, longitude, modelPath) => {
     let modelTitle = document.createElement('a-entity')
-    modelTitle.setAttribute('id', 'sightA')
+    modelTitle.setAttribute('id', 'model-title')
     modelTitle.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
 
     modelTitle.addEventListener('gps-entity-place-update-position', (event) => {
-        if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INFO_DISTANCE) {
+        const { position, scale, rotation } = titleAttribute
+
+        if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE) {
             modelTitle.setAttribute('gltf-model', modelPath)
-            modelTitle.setAttribute('position', '0 3 0')
-            modelTitle.setAttribute('scale', '2 2 2')
-            modelTitle.setAttribute('rotation', '0 180 0')
+            modelTitle.setAttribute('position', position)
+            modelTitle.setAttribute('scale', scale)
+            modelTitle.setAttribute('rotation', rotation)
         } else {
             modelTitle.removeAttribute('gltf-model')
             modelTitle.removeAttribute('position')
@@ -113,22 +150,28 @@ const contributeModelTitle = (latitude, longitude, modelPath) => {
             modelTitle.removeAttribute('rotation')
         }
     })
-
     return modelTitle
 }
 
-const contributeModelInfo = (latitude, longitude) => {
-    let modelInfo = document.createElement('a-entity')
-    modelInfo.setAttribute('id', 'sightA-introduction')
-    modelInfo.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
-    modelInfo.setAttribute('gltf-model', '/model/Aintro.glb')
-    modelInfo.setAttribute('position', '0 -3 0')
-    modelInfo.setAttribute('scale', '5 5 5')
-    modelInfo.setAttribute('rotation', '0 180 0')
+const contributeModelIntro = (latitude, longitude, modelPath) => {
+    let modelIntro = document.createElement('a-entity')
+    modelIntro.setAttribute('id', 'model-intro')
+    modelIntro.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
 
-    modelInfo.addEventListener('loaded', () => {
-        window.dispatchEvent(new CustomEvent('gps-new-entity-place-loaded'))
+    modelIntro.addEventListener('gps-entity-place-update-position', (event) => {
+        const { position, scale, rotation} = introAttribute
+
+        if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE){
+            modelIntro.setAttribute('gltf-model', modelPath)
+            modelIntro.setAttribute('position', position)
+            modelIntro.setAttribute('scale', scale)
+            modelIntro.setAttribute('rotation', rotation)
+        } else {
+            modelIntro.removeAttribute('gltf-model')
+            modelIntro.removeAttribute('position')
+            modelIntro.removeAttribute('scale')
+            modelIntro.removeAttribute('rotation')
+        }
     })
-
-    return modelInfo
+    return modelIntro
 }
