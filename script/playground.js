@@ -1,18 +1,23 @@
 const STATIC_PLACES = [
     {
         name: 'sightA',
-        location: { lat: 35.538387, lng: 139.535474 },
+        location: [35.538381890918494, 139.53549068386437],
         modelPath: { title: '/model/ATitle.glb', intro: '/model/Aintro.glb' },
     },
     {
         name: 'sightP',
-        location: { lat: 35.7089019, lng: 139.7206617 },
-        modelPath: { title: '/model/PTitle.glb', intro: '/model/PIntro.glb' },
+        location: [35.53808780830659, 139.53594306780633],
+        modelPath: { title: '/model/PTitle.glb', intro: '/model/PInfo.glb' },
     },
     {
         name: 'sightQ',
-        location: { lat: 35.7091851, lng: 139.7201655 },
-        modelPath: { title: '/model/QTitle.glb', intro: '/model/QIntro.glb' },
+        location: [35.537843081395046, 139.53493215396958],
+        modelPath: { title: '/model/QTitle.glb', intro: '/model/QInfo.glb' },
+    },
+    {
+        name: 'parking',
+        location: [35.53862867269785, 139.53458086141129],
+        modelPath: { title: '/model/RTitle.glb', intro: '/model/RInfo.glb' },
     },
 ]
 
@@ -36,8 +41,7 @@ window.onload = () => {
     let scene = document.querySelector('a-scene')
 
     STATIC_PLACES.forEach((place) => {
-        let latitude = place.location.lat
-        let longitude = place.location.lng
+        const [latitude, longitude] = place.location
 
         scene.appendChild(contributeModelPin(latitude, longitude))
         scene.appendChild(contributeModelTitle(latitude, longitude, place.modelPath.title))
@@ -48,7 +52,7 @@ const onClickIntroductionAR = () => {
     const modelIntroList = document.querySelectorAll('#model-intro')
     if (modelIntroList.length === 0) {
         const scene = document.querySelector('a-scene')
-        STATIC_PLACES.forEach(place => scene.appendChild(contributeModelIntro(place.location.lat, place.location.lng, place.modelPath.intro)))
+        STATIC_PLACES.forEach(place => scene.appendChild(contributeModelIntro(place.location[0], place.location[1], place.modelPath.intro)))
     } else {
         modelIntroList.forEach(modelIntro => modelIntro.remove())
     }
