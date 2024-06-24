@@ -123,24 +123,17 @@ const contributeModelPin = (latitude, longitude, modelPath = '/model/pin.glb') =
 }
 
 const contributeModelTitle = (latitude, longitude, modelPath) => {
+    const { position, scale, rotation } = titleAttribute
     let modelTitle = document.createElement('a-entity')
     modelTitle.setAttribute('id', 'model-title')
     modelTitle.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
+    modelTitle.setAttribute('gltf-model', modelPath)
+    modelTitle.setAttribute('position', position)
+    modelTitle.setAttribute('scale', scale)
+    modelTitle.setAttribute('rotation', rotation)
 
     modelTitle.addEventListener('gps-entity-place-update-position', (event) => {
-        const { position, scale, rotation } = titleAttribute
-
-        if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE) {
-            modelTitle.setAttribute('gltf-model', modelPath)
-            modelTitle.setAttribute('position', position)
-            modelTitle.setAttribute('scale', scale)
-            modelTitle.setAttribute('rotation', rotation)
-        } else {
-            modelTitle.removeAttribute('gltf-model')
-            modelTitle.removeAttribute('position')
-            modelTitle.removeAttribute('scale')
-            modelTitle.removeAttribute('rotation')
-        }
+        modelTitle.setAttribute('visible', (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE))
     })
     return modelTitle
 }
