@@ -45,19 +45,22 @@ window.onload = () => {
         const [latitude, longitude] = location
 
         scene.appendChild(contributeModelPin(name, latitude, longitude, modelPath.title, modelPath.intro))
-        // scene.appendChild(contributeModelTitle(latitude, longitude, place.modelPath.title))
-        // scene.appendChild(contributeModelIntro(latitude, longitude, place.modelPath.intro))
+        scene.appendChild(contributeModelTitle(latitude, longitude, place.modelPath.title))
     })
 }
 
 const onClickIntroductionAR = () => {
     const modelIntroList = document.querySelectorAll('#model-intro')
-    const isShown = !(modelIntroList[0].getAttribute('is-shown') === "true")
-    modelIntroList.forEach(modelIntro => {
-        modelIntro.setAttribute('is-shown', isShown)
-        let isVisible = isShown && modelIntro.getAttribute('distance') <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE
-        modelIntro.setAttribute('visible', isVisible)
-    })
+    if (modelIntroList.length === 0) {
+        const scene = document.querySelector('a-scene')
+        STATIC_PLACES.forEach(place => {
+            const {location, modelPath} = place
+            const [latitude, longitude] = location
+            scene.appendChild(contributeModelIntro(latitude, longitude, modelPath.intro))
+        })
+    }else {
+        modelIntroList.forEach(modelIntro => modelIntro.remove())
+    }
 }
 
 const onClickRotationLeft = () => {
