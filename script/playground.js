@@ -41,7 +41,7 @@ window.onload = () => {
     let scene = document.querySelector('a-scene')
 
     STATIC_PLACES.forEach((place) => {
-        const {name, location, modelPath} = place
+        const { name, location, modelPath } = place
         const [latitude, longitude] = location
 
         scene.appendChild(contributeModelPin(name, latitude, longitude, modelPath.title, modelPath.intro))
@@ -54,11 +54,11 @@ const onClickIntroductionAR = () => {
     if (modelIntroList.length === 0) {
         const scene = document.querySelector('a-scene')
         STATIC_PLACES.forEach(place => {
-            const {location, modelPath} = place
+            const { location, modelPath } = place
             const [latitude, longitude] = location
             scene.appendChild(contributeModelIntro(latitude, longitude, modelPath.intro))
         })
-    }else {
+    } else {
         modelIntroList.forEach(modelIntro => modelIntro.remove())
     }
 }
@@ -102,19 +102,17 @@ const onClickScaleBig = () => {
 }
 
 const onClickScaleSmall = () => {
-    const sightA = document.querySelector('#sightA')
-    const sightAIntroduction = document.querySelector('#sightA-introduction')
+    Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] *= 0.9)
+    titleAttribute.position.y *= 0.85
+    document.querySelectorAll('#model-title').forEach((title) => {
+        title.setAttribute('scale', titleAttribute.scale)
+        title.setAttribute('position', titleAttribute.position)
+    })
 
-    const scale = sightA.getAttribute('scale')
-    const position = sightA.getAttribute('position')
-    scale.x = scale.x * 0.9
-    scale.y = scale.y * 0.9
-    scale.z = scale.z * 0.9
-    position.y = position.y * 0.85
-
-    sightA.setAttribute('scale', scale)
-    sightA.setAttribute('position', position)
-    sightAIntroduction?.setAttribute('scale', scale)
+    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] *= 0.9)
+    document.querySelectorAll('#model-intro').forEach((intro) => {
+        intro.setAttribute('scale', introAttribute.scale)
+    })
 }
 
 const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => {
