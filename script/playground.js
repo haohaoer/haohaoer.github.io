@@ -34,7 +34,7 @@ const titleAttribute = {
 const introAttribute = {
     position: { x: 0, y: -3, z: 0 },
     scale: { x: 5, y: 5, z: 5 },
-    rotation: { x: 0, y: 180, z: 0 },
+    rotation: titleAttribute.rotation,
 }
 
 window.onload = () => {
@@ -64,20 +64,17 @@ const onClickIntroductionAR = () => {
 }
 
 const onClickRotationLeft = () => {
-    Object.keys(titleAttribute.rotation).forEach(k => titleAttribute.rotation += 30)
-    Object.keys(introAttribute.rotation).forEach(k => introAttribute.rotation += 30)
+    titleAttribute.rotation.y += 30
 
     document.querySelectorAll('#model-title').forEach(title => title.setAttribute('rotation', titleAttribute.rotation))
-    document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('rotation', introAttribute.rotation))
+    document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('rotation', titleAttribute.rotation))
 }
 
 const onClickRotationRight = () => {
-    Object.keys(titleAttribute.rotation).forEach(k => titleAttribute.rotation -= 30)
-    Object.keys(introAttribute.rotation).forEach(k => introAttribute.rotation -= 30)
+    titleAttribute.rotation.y -= 30
 
     document.querySelectorAll('#model-title').forEach(title => title.setAttribute('rotation', titleAttribute.rotation))
-    document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('rotation', introAttribute.rotation))
-
+    document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('rotation', titleAttribute.rotation))
 }
 
 const onClickScaleBig = () => {
