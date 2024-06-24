@@ -131,6 +131,7 @@ const contributeModelTitle = (latitude, longitude, modelPath) => {
     modelTitle.setAttribute('position', position)
     modelTitle.setAttribute('scale', scale)
     modelTitle.setAttribute('rotation', rotation)
+    modelTitle.setAttribute('visible', false)
 
     modelTitle.addEventListener('gps-entity-place-update-position', (event) => {
         modelTitle.setAttribute('visible', (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE))
