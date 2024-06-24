@@ -77,20 +77,25 @@ const onClickRotationRight = () => {
     document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('rotation', titleAttribute.rotation))
 }
 
+let scale_count = 0
 const onClickScaleBig = () => {
+    if (scale_count > 15) { return }
     Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] += 0.2)
     document.querySelectorAll('#model-title').forEach(title => title.setAttribute('scale', titleAttribute.scale))
 
-    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] += 0.1)
+    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] += 0.15)
     document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('scale', introAttribute.scale))
+    scale_count += 1
 }
 
 const onClickScaleSmall = () => {
+    if (scale_count < -5) { return }
     Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] -= 0.2)
     document.querySelectorAll('#model-title').forEach(title => title.setAttribute('scale', titleAttribute.scale))
 
-    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] -= 0.1)
+    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] -= 0.15)
     document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('scale', introAttribute.scale))
+    scale_count -= 1
 }
 
 const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => {
