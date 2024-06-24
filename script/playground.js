@@ -124,8 +124,16 @@ const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => 
     modelPin.setAttribute('scale', '1 1 1')
     modelPin.setAttribute('titlePath', titlePath)
     modelPin.setAttribute('introPath', introPath)
-    modelPin.addEventListener('gps-entity-place-update-position', (event) => {
+
+    modelPin.addEventListener('gps-entity-place-added', (event)=> {
+        console.log(`PIN_${name}: gps-entity-place-added`)
+        console.log(event)
+    })
+
+    modelPin.addEventListener('gps-entity-place-update-positon', (event) => {
+        console.log(`PIN_${name} : gps-entity-place-update-positon`)
         console.log(modelPin.getAttribute('gps-projected-entity-place'))
+        console.log(event)
         if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE){
             console.log(modelPin.getAttribute('gps-projected-entity-place'))
             modelPin.appendChild(contributeModelTitle(latitude, longitude, titlePath))
