@@ -27,13 +27,13 @@ const SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE = 15
 // modelTitle 仅经纬度及模型不同
 const titleAttribute = {
     position: { x: 0, y: 3, z: 0 },
-    scale: { x: 2, y: 2, z: 2 },
+    scale: { x: 1.5, y: 1.5, z: 1.5 },
     rotation: { x: 0, y: 180, z: 0 },
 }
 
 const introAttribute = {
     position: { x: 0, y: -3, z: 0 },
-    scale: { x: 5, y: 5, z: 5 },
+    scale: { x: 2.5, y: 2.5, z: 2.5 },
     rotation: titleAttribute.rotation,
 }
 
@@ -100,7 +100,7 @@ const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => 
     modelPin.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
     modelPin.setAttribute('gltf-model', '/model/pin.glb')
     modelPin.setAttribute('position', '0 6 0')
-    modelPin.setAttribute('scale', '1 1 1')
+    modelPin.setAttribute('scale', '1.5 1.5 1.5')
     modelPin.setAttribute('titlePath', titlePath)
     modelPin.setAttribute('introPath', introPath)
 
@@ -109,6 +109,7 @@ const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => 
 
 const contributeModelTitle = (latitude, longitude, modelPath) => {
     const { position, scale, rotation } = titleAttribute
+
     let modelTitle = document.createElement('a-entity')
     modelTitle.setAttribute('id', 'model-title')
     modelTitle.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
