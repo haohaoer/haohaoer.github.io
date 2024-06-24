@@ -130,8 +130,8 @@ const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => 
         console.log(event)
     })
 
-    modelPin.addEventListener('gps-entity-place-update-positon', (event) => {
-        console.log(`PIN_${name} : gps-entity-place-update-positon`)
+    modelPin.addEventListener('gps-entity-place-update-position', (event) => {
+        console.log(`PIN_${name} : gps-entity-place-update-position`)
         console.log(modelPin.getAttribute('gps-projected-entity-place'))
         console.log(event)
         if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE){
