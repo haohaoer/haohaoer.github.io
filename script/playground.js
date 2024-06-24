@@ -45,17 +45,18 @@ window.onload = () => {
 
         scene.appendChild(contributeModelPin(latitude, longitude))
         scene.appendChild(contributeModelTitle(latitude, longitude, place.modelPath.title))
+        scene.appendChild(contributeModelIntro(latitude, longitude, place.modelPath.intro))
     })
 }
 
 const onClickIntroductionAR = () => {
     const modelIntroList = document.querySelectorAll('#model-intro')
-    if (modelIntroList.length === 0) {
-        const scene = document.querySelector('a-scene')
-        STATIC_PLACES.forEach(place => scene.appendChild(contributeModelIntro(place.location[0], place.location[1], place.modelPath.intro)))
-    } else {
-        modelIntroList.forEach(modelIntro => modelIntro.remove())
-    }
+    const isShown = !(modelIntroList[0].getAttribute('is-shown') === "true")
+    modelIntroList.forEach(modelIntro => {
+        modelIntro.setAttribute('is-shown', isShown)
+        let isVisible = isShown && modelIntro.getAttribute('distance') <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE
+        modelIntro.setAttribute('visible', isVisible)
+    })
 }
 
 const onClickRotationLeft = () => {
@@ -140,24 +141,21 @@ const contributeModelTitle = (latitude, longitude, modelPath) => {
 }
 
 const contributeModelIntro = (latitude, longitude, modelPath) => {
+    const { position, scale, rotation } = introAttribute
+
     let modelIntro = document.createElement('a-entity')
     modelIntro.setAttribute('id', 'model-intro')
     modelIntro.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
+    modelIntro.setAttribute('gltf-model', modelPath)
+    modelIntro.setAttribute('position', position)
+    modelIntro.setAttribute('scale', scale)
+    modelIntro.setAttribute('rotation', rotation)
+    modelIntro.setAttribute('is-shown', false)
+    modelIntro.setAttribute('visible', false)
 
     modelIntro.addEventListener('gps-entity-place-update-position', (event) => {
-        const { position, scale, rotation } = introAttribute
-
-        if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE) {
-            modelIntro.setAttribute('gltf-model', modelPath)
-            modelIntro.setAttribute('position', position)
-            modelIntro.setAttribute('scale', scale)
-            modelIntro.setAttribute('rotation', rotation)
-        } else {
-            modelIntro.removeAttribute('gltf-model')
-            modelIntro.removeAttribute('position')
-            modelIntro.removeAttribute('scale')
-            modelIntro.removeAttribute('rotation')
-        }
+        let isShown = modelIntro.getAttribute('is-shown') === "true"
+        modelIntro.setAttribute('visible', isShown && (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE))
     })
     return modelIntro
 }
