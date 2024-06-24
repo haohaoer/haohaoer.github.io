@@ -79,11 +79,7 @@ const onClickRotationRight = () => {
 
 const onClickScaleBig = () => {
     Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] *= 1.1)
-    titleAttribute.position.y *= 1.15
-    document.querySelectorAll('#model-title').forEach(title => {
-        title.setAttribute('scale', titleAttribute.scale)
-        title.setAttribute('position', titleAttribute.position)
-    })
+    document.querySelectorAll('#model-title').forEach(title => title.setAttribute('scale', titleAttribute.scale))
 
     Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] *= 1.1)
     document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('scale', introAttribute.scale))
@@ -91,11 +87,7 @@ const onClickScaleBig = () => {
 
 const onClickScaleSmall = () => {
     Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] *= 0.9)
-    titleAttribute.position.y *= 0.85
-    document.querySelectorAll('#model-title').forEach(title => {
-        title.setAttribute('scale', titleAttribute.scale)
-        title.setAttribute('position', titleAttribute.position)
-    })
+    document.querySelectorAll('#model-title').forEach(title => title.setAttribute('scale', titleAttribute.scale))
 
     Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] *= 0.9)
     document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('scale', introAttribute.scale))
