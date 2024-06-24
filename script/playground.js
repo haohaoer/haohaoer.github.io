@@ -41,11 +41,12 @@ window.onload = () => {
     let scene = document.querySelector('a-scene')
 
     STATIC_PLACES.forEach((place) => {
-        const [latitude, longitude] = place.location
+        const {name, location, modelPath} = place
+        const [latitude, longitude] = location
 
-        scene.appendChild(contributeModelPin(latitude, longitude))
-        scene.appendChild(contributeModelTitle(latitude, longitude, place.modelPath.title))
-        scene.appendChild(contributeModelIntro(latitude, longitude, place.modelPath.intro))
+        scene.appendChild(contributeModelPin(name, latitude, longitude, modelPath.title, modelPath.intro))
+        // scene.appendChild(contributeModelTitle(latitude, longitude, place.modelPath.title))
+        // scene.appendChild(contributeModelIntro(latitude, longitude, place.modelPath.intro))
     })
 }
 
@@ -113,13 +114,23 @@ const onClickScaleSmall = () => {
     sightAIntroduction?.setAttribute('scale', scale)
 }
 
-const contributeModelPin = (latitude, longitude, modelPath = '/model/pin.glb') => {
+const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => {
     let modelPin = document.createElement('a-entity')
     modelPin.setAttribute('id', 'PIN')
+    modelPin.setAttribute('name', name)
     modelPin.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
-    modelPin.setAttribute('gltf-model', modelPath)
+    modelPin.setAttribute('gltf-model', '/model/pin.glb')
     modelPin.setAttribute('position', '0 6 0')
     modelPin.setAttribute('scale', '1 1 1')
+    modelPin.setAttribute('titlePath', titlePath)
+    modelPin.setAttribute('introPath', introPath)
+    modelPin.addEventListener('gps-entity-place-update-position', (event) => {
+        console.log(modelPin.getAttribute('gps-projected-entity-place'))
+        if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE){
+            console.log(modelPin.getAttribute('gps-projected-entity-place'))
+            modelPin.appendChild(contributeModelTitle(latitude, longitude, titlePath))
+        }
+    })
     return modelPin
 }
 
