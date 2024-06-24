@@ -44,25 +44,13 @@ window.onload = () => {
     })
 }
 
-function renderPlaces(places) {
-    let scene = document.querySelector('a-scene')
-
-    places.forEach((place) => {
-        let latitude = place.location.lat
-        let longitude = place.location.lng
-
-        scene.appendChild(contributeModelPin(latitude, longitude))
-        scene.appendChild(contributeModelTitle(latitude, longitude, place.modelPath))
-    })
-}
-
 const onClickIntroductionAR = () => {
-    if (document.querySelector('#sightA-introduction')) {
-        document.querySelector('#sightA-introduction').remove()
-    } else {
+    const modelIntroList = document.querySelectorAll('#model-intro')
+    if (modelIntroList.length === 0) {
         const scene = document.querySelector('a-scene')
-        const location = staticLoadPlaces().find(place => place.name === 'sightA').location
-        scene.appendChild(contributeModelInfo(location.lat, location.lng))
+        STATIC_PLACES.forEach(place => scene.appendChild(contributeModelIntro(place.location.lat, place.location.lng, place.modelPath.intro)))
+    } else {
+        modelIntroList.forEach(modelIntro => modelIntro.remove())
     }
 }
 
@@ -159,9 +147,9 @@ const contributeModelIntro = (latitude, longitude, modelPath) => {
     modelIntro.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
 
     modelIntro.addEventListener('gps-entity-place-update-position', (event) => {
-        const { position, scale, rotation} = introAttribute
+        const { position, scale, rotation } = introAttribute
 
-        if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE){
+        if (event.detail.distance <= SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE) {
             modelIntro.setAttribute('gltf-model', modelPath)
             modelIntro.setAttribute('position', position)
             modelIntro.setAttribute('scale', scale)
