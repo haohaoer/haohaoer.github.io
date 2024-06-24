@@ -26,13 +26,13 @@ const SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE = 15
 // 所有的 modelTitle 共用同样的设定
 // modelTitle 仅经纬度及模型不同
 const titleAttribute = {
-    position: { x: 0, y: 3, z: 0 },
+    position: { x: 0, y: 0, z: 0 },
     scale: { x: 1.5, y: 1.5, z: 1.5 },
     rotation: { x: 0, y: 180, z: 0 },
 }
 
 const introAttribute = {
-    position: { x: 0, y: -3, z: 0 },
+    position: { x: 0, y: -6, z: 0 },
     scale: { x: 2.5, y: 2.5, z: 2.5 },
     rotation: titleAttribute.rotation,
 }
@@ -78,18 +78,18 @@ const onClickRotationRight = () => {
 }
 
 const onClickScaleBig = () => {
-    Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] *= 1.1)
+    Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] += 0.2)
     document.querySelectorAll('#model-title').forEach(title => title.setAttribute('scale', titleAttribute.scale))
 
-    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] *= 1.1)
+    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] += 0.1)
     document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('scale', introAttribute.scale))
 }
 
 const onClickScaleSmall = () => {
-    Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] *= 0.9)
+    Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] -= 0.2)
     document.querySelectorAll('#model-title').forEach(title => title.setAttribute('scale', titleAttribute.scale))
 
-    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] *= 0.9)
+    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] -= 0.1)
     document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('scale', introAttribute.scale))
 }
 
