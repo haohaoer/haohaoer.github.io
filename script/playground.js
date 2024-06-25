@@ -1,7 +1,7 @@
 const STATIC_PLACES = [
     {
         name: 'sightP',
-        location: [35.70884454227506, 139.720781514538],
+        location: [35.70888196929828, 139.7207199067327],
         modelPath: { title: '/model/PTitle.glb', intro: '/model/PInfo.glb' },
     },
     {
@@ -21,7 +21,7 @@ const STATIC_PLACES = [
     },
     {
         name: 'sightY',
-        location: [35.70887892468206, 139.72092090798134],
+        location: [35.70890647106368, 139.72093783621418],
         modelPath: { title: '/model/YTitle.glb', intro: '/model/YInfo.glb' },
     },
     {
