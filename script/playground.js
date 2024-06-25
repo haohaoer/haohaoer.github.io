@@ -1,7 +1,7 @@
 const STATIC_PLACES = [
     {
         name: 'sightP',
-        location: [35.7088672824246, 139.72077709657162],
+        location: [35.70884454227506, 139.720781514538],
         modelPath: { title: '/model/PTitle.glb', intro: '/model/PInfo.glb' },
     },
     {
@@ -16,7 +16,7 @@ const STATIC_PLACES = [
     },
     {
         name: 'sightX',
-        location: [35.708757375972546, 139.7196828464173],
+        location: [35.708764887091064, 139.7196827226581],
         modelPath: { title: '/model/XTitle.glb', intro: '/model/XInfo.glb' },
     },
     {
@@ -36,13 +36,13 @@ const SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE = 15
 // 所有的 modelTitle 共用同样的设定
 // modelTitle 仅经纬度及模型不同
 const titleAttribute = {
-    position: { x: 0, y: 0, z: 0 },
+    position: { x: 0, y: 1, z: 0 },
     scale: { x: 1.5, y: 1.5, z: 1.5 },
     rotation: { x: 0, y: 180, z: 0 },
 }
 
 const introAttribute = {
-    position: { x: 0, y: -6, z: 0 },
+    position: { x: 0, y: -3, z: 0 },
     scale: { x: 2.5, y: 2.5, z: 2.5 },
     rotation: titleAttribute.rotation,
 }
@@ -89,7 +89,7 @@ const onClickRotationRight = () => {
 
 let scale_count = 0
 const onClickScaleBig = () => {
-    if (scale_count > 15) { return }
+    if (scale_count > 10) { return }
     Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] += 0.2)
     document.querySelectorAll('#model-title').forEach(title => title.setAttribute('scale', titleAttribute.scale))
 
@@ -114,7 +114,7 @@ const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => 
     modelPin.setAttribute('name', name)
     modelPin.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
     modelPin.setAttribute('gltf-model', '/model/pin.glb')
-    modelPin.setAttribute('position', '0 6 0')
+    modelPin.setAttribute('position', '0 7 0')
     modelPin.setAttribute('scale', '1.5 1.5 1.5')
     modelPin.setAttribute('titlePath', titlePath)
     modelPin.setAttribute('introPath', introPath)
