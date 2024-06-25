@@ -6,17 +6,17 @@ const STATIC_PLACES = [
     },
     {
         name: 'sightQ',
-        location: [35.70915606520907, 139.72012725950407],
+        location: [35.709214591401796, 139.7201042479993],
         modelPath: { title: '/model/QTitle.glb', intro: '/model/QInfo.glb' },
     },
     {
         name: 'sightR',
-        location: [35.708645756548364, 139.7198806593279],
+        location: [35.70861336284333, 139.71989438725967],
         modelPath: { title: '/model/RTitle.glb', intro: '/model/RInfo.glb' },
     },
     {
         name: 'sightX',
-        location: [35.708764887091064, 139.7196827226581],
+        location: [35.708756310686056, 139.7196581039185],
         modelPath: { title: '/model/XTitle.glb', intro: '/model/XInfo.glb' },
     },
     {
@@ -26,7 +26,7 @@ const STATIC_PLACES = [
     },
     {
         name: 'sightZ',
-        location: [35.708985353437484, 139.71913638728708],
+        location: [35.70902828855541, 139.7191612359156],
         modelPath: { title: '/model/ZTitle.glb', intro: '/model/ZInfo.glb' },
     },
 ]
@@ -36,14 +36,14 @@ const SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE = 15
 // 所有的 modelTitle 共用同样的设定
 // modelTitle 仅经纬度及模型不同
 const titleAttribute = {
-    position: { x: 0, y: 1, z: 0 },
+    position: { x: 0, y: 2, z: 0 },
     scale: { x: 1.5, y: 1.5, z: 1.5 },
     rotation: { x: 0, y: 180, z: 0 },
 }
 
 const introAttribute = {
-    position: { x: 0, y: -3, z: 0 },
-    scale: { x: 2.5, y: 2.5, z: 2.5 },
+    position: { x: 0, y: -1, z: 0 },
+    scale: { x: 2, y: 2, z: 2 },
     rotation: titleAttribute.rotation,
 }
 
@@ -114,7 +114,7 @@ const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => 
     modelPin.setAttribute('name', name)
     modelPin.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
     modelPin.setAttribute('gltf-model', '/model/pin.glb')
-    modelPin.setAttribute('position', '0 7 0')
+    modelPin.setAttribute('position', '0 8 0')
     modelPin.setAttribute('scale', '1.5 1.5 1.5')
     modelPin.setAttribute('titlePath', titlePath)
     modelPin.setAttribute('introPath', introPath)
