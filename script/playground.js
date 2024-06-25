@@ -1,23 +1,33 @@
 const STATIC_PLACES = [
     {
-        name: 'sightA',
-        location: [35.538381890918494, 139.53549068386437],
-        modelPath: { title: '/model/Atitle.glb', intro: '/model/Aintro.glb' },
-    },
-    {
         name: 'sightP',
-        location: [35.53808780830659, 139.53594306780633],
+        location: [35.7088672824246, 139.72077709657162],
         modelPath: { title: '/model/PTitle.glb', intro: '/model/PInfo.glb' },
     },
     {
         name: 'sightQ',
-        location: [35.537843081395046, 139.53493215396958],
+        location: [35.70915606520907, 139.72012725950407],
         modelPath: { title: '/model/QTitle.glb', intro: '/model/QInfo.glb' },
     },
     {
-        name: 'parking',
-        location: [35.53862867269785, 139.53458086141129],
+        name: 'sightR',
+        location: [35.708645756548364, 139.7198806593279],
         modelPath: { title: '/model/RTitle.glb', intro: '/model/RInfo.glb' },
+    },
+    {
+        name: 'sightX',
+        location: [35.708757375972546, 139.7196828464173],
+        modelPath: { title: '/model/XTitle.glb', intro: '/model/XInfo.glb' },
+    },
+    {
+        name: 'sightY',
+        location: [35.70887892468206, 139.72092090798134],
+        modelPath: { title: '/model/YTitle.glb', intro: '/model/YInfo.glb' },
+    },
+    {
+        name: 'sightZ',
+        location: [35.708985353437484, 139.71913638728708],
+        modelPath: { title: '/model/ZTitle.glb', intro: '/model/ZInfo.glb' },
     },
 ]
 
