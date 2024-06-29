@@ -21,7 +21,7 @@ const STATIC_PLACES = [
     },
     {
         name: 'sightY',
-        location: [35.70890647106368, 139.72093783621418],
+        location: [35.70895840254481, 139.72093706834283],
         modelPath: { title: '/model/YTitle.glb', intro: '/model/YInfo.glb' },
     },
     {
@@ -42,7 +42,7 @@ const titleAttribute = {
 }
 
 const introAttribute = {
-    position: { x: 0, y: -1, z: 0 },
+    position: { x: 0, y: -0.5, z: 0 },
     scale: { x: 2, y: 2, z: 2 },
     rotation: titleAttribute.rotation,
 }
@@ -90,20 +90,20 @@ const onClickRotationRight = () => {
 let scale_count = 0
 const onClickScaleBig = () => {
     if (scale_count > 10) { return }
-    Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] += 0.2)
+    Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] *= 1.1)
     document.querySelectorAll('#model-title').forEach(title => title.setAttribute('scale', titleAttribute.scale))
 
-    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] += 0.15)
+    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] *= 1.1)
     document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('scale', introAttribute.scale))
     scale_count += 1
 }
 
 const onClickScaleSmall = () => {
-    if (scale_count < -5) { return }
-    Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] -= 0.2)
+    if (scale_count < -10) { return }
+    Object.keys(titleAttribute.scale).forEach((k) => titleAttribute.scale[k] *= 0.9)
     document.querySelectorAll('#model-title').forEach(title => title.setAttribute('scale', titleAttribute.scale))
 
-    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] -= 0.15)
+    Object.keys(introAttribute.scale).forEach((k) => introAttribute.scale[k] *= 0.9)
     document.querySelectorAll('#model-intro').forEach(intro => intro.setAttribute('scale', introAttribute.scale))
     scale_count -= 1
 }
@@ -114,7 +114,7 @@ const contributeModelPin = (name, latitude, longitude, titlePath, introPath) => 
     modelPin.setAttribute('name', name)
     modelPin.setAttribute('gps-projected-entity-place', `latitude: ${latitude}; longitude: ${longitude};`)
     modelPin.setAttribute('gltf-model', '/model/pin.glb')
-    modelPin.setAttribute('position', '0 8 0')
+    modelPin.setAttribute('position', '0 5 0')
     modelPin.setAttribute('scale', '1.5 1.5 1.5')
     modelPin.setAttribute('titlePath', titlePath)
     modelPin.setAttribute('introPath', introPath)
