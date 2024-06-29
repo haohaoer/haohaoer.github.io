@@ -36,8 +36,8 @@ const SHOW_SIGHT_TITLE_AND_INTRO_DISTANCE = 15
 // 所有的 modelTitle 共用同样的设定
 // modelTitle 仅经纬度及模型不同
 const titleAttribute = {
-    position: { x: 0, y: 2, z: 0 },
-    scale: { x: 1, y: 1, z: 1 },
+    position: { x: 0, y: 2.5, z: 0 },
+    scale: { x: 0.8, y: 0.8, z: 0.8 },
     rotation: { x: 0, y: 180, z: 0 },
 }
 
