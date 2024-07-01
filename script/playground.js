@@ -26,7 +26,7 @@ const STATIC_PLACES = [
     },
     {
         name: 'sightZ',
-        location: [35.70902828855541, 139.7191612359156],
+        location: [35.70906475752422, 139.7191510717475],
         modelPath: { title: '/model/ZTitle.glb', intro: '/model/ZInfo.glb' },
     },
 ]
