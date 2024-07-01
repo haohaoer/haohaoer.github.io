@@ -16,12 +16,12 @@ const STATIC_PLACES = [
     },
     {
         name: 'sightX',
-        location: [35.708756310686056, 139.7196581039185],
+        location: [35.70875838411237, 139.71968247070262],
         modelPath: { title: '/model/XTitle.glb', intro: '/model/XInfo.glb' },
     },
     {
         name: 'sightY',
-        location: [35.70895840254481, 139.72093706834283],
+        location: [35.70890145409443, 139.7208976443291],
         modelPath: { title: '/model/YTitle.glb', intro: '/model/YInfo.glb' },
     },
     {
